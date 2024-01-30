@@ -17,8 +17,6 @@ limitations under the License.
 package clouddns
 
 import (
-	"strconv"
-
 	"k8s.io/kops/dnsprovider/pkg/dnsprovider"
 	"k8s.io/kops/dnsprovider/pkg/dnsprovider/providers/google/clouddns/internal/interfaces"
 )
@@ -36,7 +34,7 @@ func (zone *Zone) Name() string {
 }
 
 func (zone *Zone) ID() string {
-	return strconv.FormatUint(zone.impl.Id(), 10)
+	return zone.impl.Name()
 }
 
 func (zone *Zone) ResourceRecordSets() (dnsprovider.ResourceRecordSets, bool) {
